@@ -6,8 +6,11 @@ public class CPCManager : MonoBehaviour
 {
     [SerializeField]
     private int CPC;
-    public GameManager gamemanager;
+    public CPCManager instance;
 
+    private void Awake() {
+        instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +30,7 @@ public class CPCManager : MonoBehaviour
 
     public void ButtonClick() {
         Debug.Log("clicked");
-       gamemanager.AddCoins(CPC);
+        GameManager.instance.AddCoins(CPC);
     }
 
 

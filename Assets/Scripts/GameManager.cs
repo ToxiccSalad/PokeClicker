@@ -5,13 +5,16 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-
-    public int coins;
+    public static GameManager instance;
+    private void Awake() {
+        instance = this;
+    }
+    public GameData gameData;
     public TMP_Text mText;
     // Start is called before the first frame update
     void Start()
     {
-        coins = 0;
+        gameData = new GameData();
     }
 
     // Update is called once per frame
@@ -21,14 +24,14 @@ public class GameManager : MonoBehaviour
     }
 
     public void AddCoins(int amountcoins) {
-        coins = coins + amountcoins;
-        mText.text = coins +" Coins";
+        gameData.coins = gameData.coins + amountcoins;
+        mText.text = gameData.coins +" Coins";
     }
     public void RemoveCoins(int amountcoins) {
-        coins = coins - amountcoins;
-        mText.text = coins +" Coins";
+        gameData.coins = gameData.coins - amountcoins;
+        mText.text = gameData.coins +" Coins";
     }
     public int GetCoins(){
-        return coins;
+        return gameData.coins;
     }
 }

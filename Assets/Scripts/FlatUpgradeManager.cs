@@ -11,8 +11,6 @@ public class FlatUpgradeManager : MonoBehaviour
    [SerializeField]
     private int CPCIncrease;
    public TMP_Text CostText;
-   public GameManager gamemanager;
-   public CPCManager CPCManager;
    public Button UpgradeButton;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +21,7 @@ public class FlatUpgradeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gamemanager.GetCoins()>=cost){
+        if(GameManager.instance.GetCoins()>=cost){
         UpgradeButton.interactable = true;
     }else{
        UpgradeButton.interactable = false;
@@ -32,8 +30,8 @@ public class FlatUpgradeManager : MonoBehaviour
     }
     public void ButtonClick() {
         Debug.Log("clicked");
-       gamemanager.RemoveCoins(cost);
-       CPCManager.AddCPC(CPCIncrease);
+       GameManager.instance.RemoveCoins(cost);
+       CPCManager.instance.AddCPC(CPCIncrease);
        SetNewCost();
        CostText.text=cost.ToString();
     }
